@@ -1,0 +1,28 @@
+class Solution {
+public:
+    string longestCommonUtil(string a, string b)
+    {
+        string comm = "";
+        int len = min(a.size(), b.size());
+        
+        for(int i = 0; i<len; i++)
+        {
+            if(a[i]!=b[i])
+                break;
+            comm += a[i];
+        }
+        return comm; 
+    }
+    string longestCommonPrefix(vector<string>& strs) 
+    {
+        string pref = strs[0]; // should not be equal to blank
+        
+        for(int i = 1; i<strs.size(); i++)
+        {
+            pref = longestCommonUtil(pref, strs[i]);
+        }
+        
+        return pref;
+        
+    }
+};
